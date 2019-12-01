@@ -1,14 +1,38 @@
-\documentclass{article}
+\documentclass[11pt,English]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[bottom]{footmisc}
 
-\title{Math 147 Final Project}
-\author{Thomas Atkins}
-\date{November 2019}
+\title{
+Green's Theorem\\
+    \large Historical Origins and Analytical Applications\\
+    \small MATH 147 Final Project\\
+    \small University of Kansas, Dept. of Mathematics
+}
+\author{
+    Atkins, Thomas\\
+    \texttt{thomas.atkins@ku.edu}
+    \and
+    Mills, Garrett\\
+    \texttt{glmdev@ku.edu}
+    \and
+    Weng, QiTao\\
+    \texttt{wengqt@ku.edu}
+}
+\date{December 2019}
 
 \begin{document}
 
 \maketitle
+\begin{abstract}
+    In which the authors investigate the historical origins and several mathematical applications of the commonly known Green's theorem. Discovered by George Green in the late 1820s, this theorem provides a relationship between the line integral of a particular curve and the surface integral of its enclosed region. Green's theorem is closely related to the divergence theorem, and is simply a specific case of the more general Stoke's theorem. Beyond basic applications to flux and surface integrals, Green's theorem can be reverse applied to calculate difficult-to-evaluate area calculations. It also plays an integral role (pun intended) in the proof of other important theorems such as Cauchy's.
+\end{abstract}
 
 \section{Introduction}
+
+Green's theorem is commonly defined as follows.\footnote{"Section 5-7: Green's Theorem" - Paul Dawkins, Lamar University - 02-22-2019. (http://tutorial.math.lamar.edu/Classes/CalcIII/GreensTheorem.aspx)} Let $C$ be a simple, smooth, closed, positive curve and $D$ the region enclosed by said curve. Assume $P'$, $Q'$ are continuous. Then, the following relationship holds:
+$$
+\int_C{ P dx + Q dy } = \iint_D{ \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA }
+$$
 
 \end{document}
