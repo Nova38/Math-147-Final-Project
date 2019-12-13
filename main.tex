@@ -15,6 +15,27 @@
 % 1) Authors names and affiliations
 % 2) Title abstract keywords
 % 3) 147 why its important
+%
+% History
+%
+% http://mathshistory.st-andrews.ac.uk/Biographies/Green.html
+%
+%
+%
+% Example I
+% - Apex Calc III - example "Confirming Green's Theorem" pg. 875
+%     https://www.apexcalculus.com/downloads
+%
+%
+%
+%
+% Example II
+%
+% 
+% https://brilliant.org/wiki/greens-theorem/
+%https://www.khanacademy.org/math/multivariable-calculus/greens-theorem-and-stokes-theorem/greens-theorem-articles/a/greens-theorem-examples
+%
+%
 
 \title{
 Green's Theorem\\
@@ -45,9 +66,68 @@ Green's Theorem\\
 
 \section{Introduction}
 
+George Green, the mathematician who would go one to postulate the now famous Green's theorem, was born in July of 1793. As a youth he received only a year of formal schooling when he was 8 years old. While working full time at a mile owned by his father in 1728 he published \emph{An Essay on the Application of Mathematical Analysis to the Theories of Electricity and Magnetism.} In that publication Green would put forth the therm that now bears his name, thought it would be years before anyone would fully appreciate it. The publication of the paper would catch the eye of one Sir Edward Bromhead, who would latter encouraged Green to study Mathematics at Cambridge. He would died before his work would be recognized as the landmark discovery it was.\footnote{"George Green
+" University of St Andrews, October 1998, (http://mathshistory.st-andrews.ac.uk/Biographies/Green.html)}
+
+
+
+% here is some definitions stuffs
 Green's theorem is commonly defined as follows.\footnote{"Section 5-7: Green's Theorem" - Paul Dawkins, Lamar University - 02-22-2019. (http://tutorial.math.lamar.edu/Classes/CalcIII/GreensTheorem.aspx)} Let $C$ be a simple, smooth, closed, positive curve and $D$ the region enclosed by said curve. Assume $P'$, $Q'$ are continuous. Then, the following relationship holds:
 $$
 \int_C{ P dx + Q dy } = \iint_D{ \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA }
 $$
+
+
+\section{Verification of Green's Theorem}
+Green's theorem is commonly used in applications of vector calculus to other fields of study, particularly physics in the plane. One example of this is calculating the circulation of vector fields along a closed boundary. For our purposes, circulation refers to the magnitude of the vector field that \emph{passes through} or \emph{pushes against} the closed boundary.\footnote{"Vector Calculus: Understanding Circulation and Curl" - Editors of BetterExplained, BetterExplained, Vector Calculus - n.d.} 
+
+==== Illustration Image of Circulation Here ====
+
+Take, for example, the field and boundary pictured above. There is some vector field in the plane, $\vec{E}$, that emanates from some point $P$. Inset in that field is some simple, closed boundary $\partial S$. The circulation of the field $\vec{E}$ with respect to the boundary $\partial S$ is the magnitude $E$ that is incident on $\partial S$. That is, the \emph{amount} of the field that passes through the boundary.
+
+We can verify Green's theorem by calculating the circulation of a vector field manually using line integrals, and using the formula for Green's. Let, for example, our electric field $\vec{E} = \left< -y, x^2+1 \right>$. The boundary, as shown above, is a triangle traversed counter-clockwise, with vertices at $\left( -1, 0 \right)$, $\left( 1, 0 \right)$, and $\left(0, 2\right)$.
+
+\subsection{Using Line Integrals}
+We can calculate the circulation using a series of line integrals of parameterizations along the sides of the triangle. Provided that you traverse it counter-clockwise, you can start at any of the vertices. Starting at $\left(-1, 0\right)$, we can use the following parameterizations:
+\begin{align}
+\vec{r}_1(t) &= \left<2t-1, 0\right> \;\;\;\;\; 0 \leq t \leq 1 \\
+\vec{r}_2(t) &= \left<1-t, 2t\right> \;\;\;\;\;\; 0 \leq t \leq 1 \\
+\vec{r}_3(t) &= \left<-t, 2-2t\right> \;\;\;\; 0 \leq t \leq 1
+\end{align}
+
+The circulation along a single edge (one of the $\vec{r}_i$) can be computed using the following vector line integral:
+$$
+\Phi_i = \int_{C_i} \vec{E}(\vec{r}_i) \cdot d\vec{r}_i
+$$
+
+In each case, the $d\vec{r}_i$ can be computed as $\frac{\partial\vec{r}_i}{\partial t}$. Hence, for our purposes, the various $d\vec{r}_i$ are as follows:
+\begin{align}
+    \frac{\partial\vec{r}_1}{\partial t} &= \left<2, 0\right> \\
+    \frac{\partial\vec{r}_2}{\partial t} &= \left<-1, 2\right> \\
+    \frac{\partial\vec{r}_3}{\partial t} &= \left<-1, -2\right>
+\end{align}
+
+So we can calculate the various $\Phi_i$ using the formula above. Then, we can find the resultant $\Phi_{net}$ as the sum of the circulations of the individual components.\footnote{This makes an intuitive sense. If you have a bucket with 2 liters of water per second flowing in the top and 1 liter of water per second flowing out the bottom, the total flow of water in the bucket is a gain of 1 liter of water per second ($2 \frac{L}{s} - 1 \frac{L}{s} = 1 \frac{L}{s}$).}
+
+\begin{align*}
+    \Phi_1 &= \int_{C_1} \vec{E}(\vec{r}_1) \cdot d\vec{r}_1 \\
+    &= \int_0^1 \left<0, (2t-1)^2 +1\right> \cdot \left<2,0\right> dt \\
+    &= 0
+\end{align*}
+
+\begin{align*}
+    \Phi_2 &= \int_{C_2} \vec{E}(\vec{r}_2) \cdot d\vec{r}_2 \\
+    &= \int_0^1 \left<-2t, (1-t)^2 +1\right> \cdot \left<-1,2\right> dt \\
+    &= \int_0^1 (2t + 2(1-t)^2 +2) \; dt \\
+    &= \int_0^1 (2t^2 -2t + 4) \; dt \\
+    &= \frac{11}{3}
+\end{align*}
+
+\section{Applications}
+Calculating parametric curves using Green's theorem instead of directly computing a line integral can often be much simpler. Calculating the area of a seashell:
+\begin{align*}
+    x(t) &= t\cos{t} \\
+    y(t) &= t\sin{t} \\ 
+\end{align*}
 
 \end{document}
