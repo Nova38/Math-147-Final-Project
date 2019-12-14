@@ -12,6 +12,8 @@
 
 % Plot set up --Thomas--
 \usepackage{pgfplots}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikz/]
 \pgfplotsset{compat=1.16,scale=1.25}
 
 \pgfplotsset{
@@ -101,7 +103,7 @@ Green's theorem is commonly used in applications of vector calculus to other fie
 
 % ==== Illustration Image of Circulation Here ====
 
-\begin{figure}[]
+\begin{figure}[h]
     \centering
         \begin{tikzpicture}
             \begin{axis}[vector,
