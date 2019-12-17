@@ -98,7 +98,6 @@ George Green, the mathematician who would go on to postulate the now famous Gree
     \label{fig:my_label}
 \end{figure}
 
-
 \subsection{Definition}
 % here is some definitions stuffs
 Green's theorem is commonly defined as follows.\footnote{"Section 5-7: Green's Theorem" - Paul Dawkins, Lamar University - 02-22-2019. (http://tutorial.math.lamar.edu/Classes/CalcIII/GreensTheorem.aspx)} Let $C$ be a simple, smooth, closed, positively-oriented curve and $D$ the region enclosed by said curve. Assume $P$ and $Q$ are, at least, singly differentiable. Then, the following relationship holds:
@@ -275,9 +274,12 @@ Using a pair of functions that satisfies $\frac{\partial Q}{\partial x} - \frac{
 \end{align*}
 Otherwise, in order to solve the area enclosed by the spiral, we would need to evaluate:
 \begin{align*}
-    \text{Area} &= \int^{2\pi}_{0} t\cos{t}\cdot (t\sin{t})'\:dt \\
-    &= \int^{2\pi}_{0}t\cos{t}\cdot (t\cos{t}+\sin{t})\:dt \\
-    &= \int^{2\pi}_{0} t^{2}\cos^{2}{t}+t\sin{t}\cos{t}\:dt
+    \text{Area} &= \int^{b}_{a}F(x)dx,\;\; dx = f'(t)\:dt \\
+    &= \int^{b}_{a}F(f(t))f'(t)\:dt, \;\; F(f(t)) = g(t) = y \\
+    &= \int^{\beta}_{\alpha}y\:dx\;\; \text{or} \int^{\alpha}_{\beta}y\:dx\\
+    &= \int^{2\pi}_{0} t\sin{t}\cdot (t\cos{t})'\:dt \\
+    &= \int^{2\pi}_{0}t\sin{t}\cdot (-t\sin{t}+\cos{t})\:dt \\
+    &= \int^{2\pi}_{0} -t^{2}\sin^{2}{t}+t\sin{t}\cos{t}\:dt
 \end{align*}
 Which results in a far more complex series of steps to the solution.
 
@@ -287,7 +289,30 @@ A second example can be shown with a squashed ellipse, or what appears to be an 
     y &= \sin^2{\theta}\cos{\theta} \\
     0 &< \theta < 2\pi \\
     \oint_{c}y\:dx &= \int^{2\pi}_{0}(\sin^2{\theta}\cos{\theta})(\cos{\theta})\:d\theta \\
+    &= \int^{2\pi}_{0} \sin^2{\theta}\cos^2{\theta}\:d\theta \\
+    &= \int^{2\pi}_{0} \frac{1}{4}\sin^2(2\theta)\:d\theta \;\;\; \text{(Product to sum formula)} \\
+    &= \frac{1}{4}\int^{2\pi}_{0}(\frac{1}{2}-\frac{1}{2}\cos{4\theta})\:d\theta \\
+    &= \frac{\pi}{4} - \frac{1}{8}\int^{2\pi}_{0}\cos{4\theta}\:d\theta \\
+    &= \frac{\pi}{4}-\frac{1}{32}\sin{4\theta}\Big|^{2\pi}_{0} \\
+    &= \frac{\pi}{4}
 \end{align*}
+If we attempt this case without Green's theorem, we would need to evaluate:
+\begin{align*}
+\text{Area} &= \int^{2\pi}_{0} \sin^2{\theta}\cos{\theta}\cdot (\sin{\theta})'\:d\theta\;\;\; \text{(This is the same as above)}
+\end{align*}
+
+In both of these cases we can see that it is often beneficial for us to use Green's theorem instead of directly finding and computing the area inside a space through the formula for the area under a parametric curve. In fact, because the Green's theorem can be seen as a simpler representation of the different permutations of the original formula, all that it does is allow for more options in doing the integral such that a simpler version of the calculation can be done. It can be seen from the second example that the original formula also happens to be a convenient formula that can be obtained from Green's theorem.
+
+Aside from the use cases of Green's theorem in Vector Calculus, a discrete version of Green's theorem seems to be an application in the discrete mathematics of theoretical computer science. A journal article takes a look at computing the area of a series of pixels in a two-dimensional plane for polyominoes.\footnote{Alain Chalifour, Fathallah Nouboud, Yvon Voisin, "Computation of the area in the discrete plane: Green’s theorem revisited," J. Electron. Imag. 26(6) 063022 (5 December 2017) https://doi.org/10.1117/1.JEI.26.6.063022}
+
+%Maybe pop this in here https://www.spiedigitallibrary.org/ContentImages/Journals/JEIME5/26/6/063022/WebImages/JEI_26_6_063022_f002.png
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{polyominoes.png}
+    \caption{Discrete Green's theorem 
+    (https://www.spiedigitallibrary.org/journals/journal-of-electronic-imaging/volume-26/issue-06/063022/Computation-of-the-area-in-the-discrete-plane--Greens/10.1117/1.JEI.26.6.063022.full)}
+    \label{fig:my_label}
+\end{figure}
 
 
 \end{document}
