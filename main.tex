@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage[bottom]{footmisc}
+\usepackage{graphicx}
+
 
 % Keywords command
 \providecommand{\keywords}[1]
@@ -79,27 +81,55 @@ Green's Theorem\\
 
 \maketitle
 \begin{abstract}
-    In which the authors investigate the historical origins and several mathematical applications of the commonly known Green's theorem. Discovered by George Green in the late 1820s, this theorem provides a relationship between the line integral of a particular curve and the surface integral of its enclosed region. Green's theorem is closely related to the divergence theorem, and is simply a specific case of the more general Stoke's theorem. Beyond basic applications to flux and surface integrals, Green's theorem can be reverse applied to calculate difficult-to-evaluate area calculations. It also plays an integral role (pun intended) in the proof of other important theorems such as Cauchy's.
+    In which the authors investigate the historical origins and several mathematical applications of the commonly known Green's theorem. Discovered by George Green in the late 1820s, this theorem provides a relationship between the line integral of a particular curve and the surface integral of its enclosed region. Green's theorem is closely related to the divergence theorem, and is simply a specific case of the more general Stoke's theorem. Beyond basic applications to flux and surface integrals, Green's theorem can be reverse applied to calculate difficult-to-evaluate area calculations. It also plays an integral role (pun intended) in the proof of other important theorems.
 \end{abstract}
 
 \keywords{Green, Stoke, integration, vector calculus}
 
 \section{Introduction}
 
-George Green, the mathematician who would go one to postulate the now famous Green's theorem, was born in July of 1793. As a youth he received only a year of formal schooling when he was 8 years old. While working full time at a mile owned by his father in 1728 he published \emph{An Essay on the Application of Mathematical Analysis to the Theories of Electricity and Magnetism.} In that publication Green would put forth the therm that now bears his name, thought it would be years before anyone would fully appreciate it. The publication of the paper would catch the eye of one Sir Edward Bromhead, who would latter encouraged Green to study Mathematics at Cambridge. He would died before his work would be recognized as the landmark discovery it was.\footnote{"George Green
+George Green, the mathematician who would go on to postulate the now famous Green's theorem, was born in July of 1793. As a youth he received only a year of formal schooling when he was 8 years old. While working full time at a mill owned by his father in 1728 he published \emph{An Essay on the Application of Mathematical Analysis to the Theories of Electricity and Magnetism.} In that publication, Green would put forth the theorem that now bears his name, though it would be years before anyone would fully appreciate it. The publication of the paper would catch the eye of one Sir Edward Bromhead, who would later encourage Green to study Mathematics at Cambridge. He would died before his work would be recognized as the landmark discovery it was.\footnote{"George Green
 " University of St Andrews, October 1998, (http://mathshistory.st-andrews.ac.uk/Biographies/Green.html)}
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=.2]{George_Green.jpg}
+    \caption{George Green (http://georgegreens.com/history-george-greens.html)}
+    \label{fig:my_label}
+\end{figure}
 
 
+\subsection{Definition}
 % here is some definitions stuffs
-Green's theorem is commonly defined as follows.\footnote{"Section 5-7: Green's Theorem" - Paul Dawkins, Lamar University - 02-22-2019. (http://tutorial.math.lamar.edu/Classes/CalcIII/GreensTheorem.aspx)} Let $C$ be a simple, smooth, closed, positive curve and $D$ the region enclosed by said curve. Assume $P'$, $Q'$ are continuous. Then, the following relationship holds:
+Green's theorem is commonly defined as follows.\footnote{"Section 5-7: Green's Theorem" - Paul Dawkins, Lamar University - 02-22-2019. (http://tutorial.math.lamar.edu/Classes/CalcIII/GreensTheorem.aspx)} Let $C$ be a simple, smooth, closed, positively-oriented curve and $D$ the region enclosed by said curve. Assume $P$ and $Q$ are, at least, singly differentiable. Then, the following relationship holds:
 $$
 \int_C{ P dx + Q dy } = \iint_D{ \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA }
 $$
+Essentially, this theorem defines a relationship between the quantity of a vector field that "passes through" a boundary and the differential of that vector field across the surface enclosed by that boundary. This is useful because, often, a difficult-to-calculate line integral can be made much simpler by converting them to a double-integral using Green's theorem (and vice-versa).
 
+\subsection{Connections to Stoke's Theorem}
+Interestingly, Stoke's theorem and Green's theorem are closely related. While it is technically accurate to say that Green's theorem is a specific, 2-dimensional application of Stoke's theorem, in actuality, Stoke's theorem is a 3-dimensional generalization of the earlier Green's theorem.\footnote{"The Idea Behind Stoke's Theorem" - Dr. Duane Nykamp et al., Math Insight - n.d. (https://mathinsight.org/stokes\_theorem\_idea)}
+
+While, if you have a surface in the xy-plane, Green's theorem can be used to calculate the circulation of some field through the boundary of that surface, Stoke's generalization of Green's theorem can be used if your surface exists in the z-dimension as well. In this case, the curl of the vector field (which is used by Stoke's theorem) is analogous to the cross-variable partial differentials used by Green's implementation.
+
+\subsection{Connections to Divergence Theorem}
+\begin{align*}
+    \oint_C \vec{F} \cdot \vec{n} \; ds = \iint_D div \; \vec{F} \; dA
+\end{align*}
+Above is the generally accepted definition of the divergence theorem.\footnote{"Flow, Flux, Green’s Theorem and the Divergence Theorem" - Dr. Timothy Prescott, Apex Calculus - n.d. (https://sites.und.edu/timothy.prescott/apex/web/apex.Ch15.S4.html)} It relates the circulation of some vector field across the surface to the integral sum of all the closed loops over that surface. As with Stoke's theorem, the divergence theorem is simple a more generalized statement of the same kernel idea as Green's theorem. Assume, for example, the following 2-dimensional vector field:
+$$
+\vec{f} = \left<P,Q\right>
+$$
+
+If we dot this field with its normal, we're left with an expression that might look familiar:
+$$
+\vec{F} \cdot \hat{n} = P \; dy - Q \; dx
+$$
+
+This is because the statement of Green's theorem can be derived from the divergence theorem by isolating the divergence theorem to 2 dimensions and evaluating it with general variables. It is evident that Green's theorem was an important milestone in the development of vector analysis which enabled the generalization of higher-dimension theorems like the divergence theorem and Stoke's theorem.
 
 \section{Verification of Green's Theorem}
-Green's theorem is commonly used in applications of vector calculus to other fields of study, particularly physics in the plane. One example of this is calculating the circulation of vector fields along a closed boundary. For our purposes, circulation refers to the magnitude of the vector field that \emph{passes through} or \emph{pushes against} the closed boundary.\footnote{"Vector Calculus: Understanding Circulation and Curl" - Editors of BetterExplained, BetterExplained, Vector Calculus - n.d.} 
+Green's theorem is commonly used in applications of vector calculus to other fields of study, particularly physics in the plane. One example of this is calculating the circulation of vector fields along a closed boundary. For our purposes, circulation refers to the magnitude of the vector field that \emph{passes through} or \emph{pushes against} the closed boundary.\footnote{"Vector Calculus: Understanding Circulation and Curl" - Editors of BetterExplained, BetterExplained, Vector Calculus - n.d. (https://betterexplained.com/articles/vector-calculus-understanding-circulation-and-curl/)}
 
 
 
@@ -225,11 +255,39 @@ Now, we can compute the related area by dotting this result with the differentia
 Thus, the circulation across the boundary is $2 \; Vm$, which is consistent with the result we found above.
 
 \section{Applications}
-Calculating parametric curves using Green's theorem instead of directly computing a line integral can often be much simpler. Calculating the area of a seashell-like spiral:
+Calculating parametric curves using Green's theorem instead of directly computing a line integral can often be much simpler. Calculating the area of a seashell-like spiral:\footnote{Editors of khanacademy.org. (n.d.). Green's theorem examples. Retrieved from https://www.khanacademy.org/math/multivariable-calculus/greens-theorem-and-stokes-theorem/greens-theorem-articles/a/greens-theorem-examples.}
 \begin{align*}
     x(t) = t\cos{t} \\
     y(t) = t\sin{t}  \\
     0<t<2\pi \\
 \end{align*}
+
+Using a pair of functions that satisfies $\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 1$, such as: $\oint_{c}-\frac{1}{2}y \; dx+\frac{1}{2}x \; dy $
+\begin{align*}
+    xdy-ydx &= (x(t)\frac{dy}{dt}-y(t)\frac{dx}{dt})dt \\
+    &= (t\cos{t}\frac{d(t\sin{t})}{dt}-t\sin{t}\frac{d(t\cos{t})}{dt}\;dt \\
+    &= (t\cos{t}(t\cos{t}+\sin{t})-t\sin{t}(-t\sin{t}+\cos{t}))\;dt \\
+    &= (t^2\cos^2{t}+t\cos{t}\sin{t}+t^2\sin^2{t}-t\sin{t}\cos{t})\;dt\\
+    &= (t^2(\sin^2{t}+\cos^2{t})\;dt \\
+    &= t^2\:dt \\
+    \int_{spiral}\frac{1}{2}(xdy-ydx) &= \int^{2\pi}_{0}\frac{1}{2}t^2dt = \frac{1}{6}t^3\Big|^{2\pi}_{0} \\
+    &= \frac{4\pi^3}{3}
+\end{align*}
+Otherwise, in order to solve the area enclosed by the spiral, we would need to evaluate:
+\begin{align*}
+    \text{Area} &= \int^{2\pi}_{0} t\cos{t}\cdot (t\sin{t})'\:dt \\
+    &= \int^{2\pi}_{0}t\cos{t}\cdot (t\cos{t}+\sin{t})\:dt \\
+    &= \int^{2\pi}_{0} t^{2}\cos^{2}{t}+t\sin{t}\cos{t}\:dt
+\end{align*}
+Which results in a far more complex series of steps to the solution.
+
+A second example can be shown with a squashed ellipse, or what appears to be an hourglass, with the parameterization:\footnote{Editors of brilliant.org. (n.d.). Green's Theorem. Retrieved from https://brilliant.org/wiki/greens-theorem/.}
+\begin{align*}
+    x &= \sin{\theta} \\
+    y &= \sin^2{\theta}\cos{\theta} \\
+    0 &< \theta < 2\pi \\
+    \oint_{c}y\:dx &= \int^{2\pi}_{0}(\sin^2{\theta}\cos{\theta})(\cos{\theta})\:d\theta \\
+\end{align*}
+
 
 \end{document}
